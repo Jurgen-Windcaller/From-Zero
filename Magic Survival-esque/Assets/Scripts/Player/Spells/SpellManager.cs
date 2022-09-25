@@ -6,6 +6,7 @@ public class SpellManager : MonoBehaviour
 {
     [SerializeField] GameObject spellButtonFab;
     [SerializeField] GameObject transformsParent;
+    [SerializeField] GameObject canvas;
 
     private List<ItemObj> spells = new List<ItemObj>();
     private ActiveItemManager inventory;
@@ -18,6 +19,7 @@ public class SpellManager : MonoBehaviour
         inventory = ActiveItemManager.instance;
 
         inventory.OnActiveItemChangeCallback += CheckForSpells;
+        inventory.OnActiveItemChangeCallback += CreateButtons;
     }
 
     // Update is called once per frame
@@ -48,8 +50,14 @@ public class SpellManager : MonoBehaviour
         }
     }
 
-    private void CreateButtons(ItemObj obj)
+    private void CreateButtons()
     {
-        
+        for(int i = 0; i < inventory.items.Count; i++)
+        {
+            if (i < spellButtonTransforms.Length)
+            {
+                Instantiate(spellButtonFab, spellButtonTransforms[i].position, spellButtonTransforms[i].rotation, canvas.transform);
+            }
+        }
     }
 }
