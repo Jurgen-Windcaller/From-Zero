@@ -62,6 +62,7 @@ public class ActiveItemManager : MonoBehaviour
         else
         {
             Debug.LogWarning("Item being removed is not in inventory list");
+            return;
         }
 
         if (OnActiveItemChangeCallback != null)

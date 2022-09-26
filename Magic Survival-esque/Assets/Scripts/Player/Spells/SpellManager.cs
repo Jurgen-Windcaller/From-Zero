@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +9,7 @@ public class SpellManager : MonoBehaviour
     [SerializeField] GameObject transformsParent;
     [SerializeField] GameObject canvas;
 
-    private List<ItemObj> spells = new List<ItemObj>();
+    public List<ItemObj> spells = new List<ItemObj>();
     private ActiveItemManager inventory;
     private Transform[] spellButtonTransforms;
 
@@ -16,6 +17,8 @@ public class SpellManager : MonoBehaviour
     void Start()
     {
         spellButtonTransforms = transformsParent.GetComponentsInChildren<Transform>();
+        spellButtonTransforms = spellButtonTransforms.Skip(1).ToArray();
+
         inventory = ActiveItemManager.instance;
 
         inventory.OnActiveItemChangeCallback += AddSpells;
@@ -52,6 +55,8 @@ public class SpellManager : MonoBehaviour
 
     private void CreateButtons(ItemObj item, int iterator)
     {
-        Instantiate(spellButtonFab, spellButtonTransforms[iterator].position, spellButtonTransforms[iterator].rotation, canvas.transform);
+        GameObject curButton = Instantiate(spellButtonFab, spellButtonTransforms[iterator].position, spellButtonTransforms[iterator].rotation, canvas.transform);
+
+        curButton.GetComponent<SpellButton>().OnInstantiate(item);
     }
 }

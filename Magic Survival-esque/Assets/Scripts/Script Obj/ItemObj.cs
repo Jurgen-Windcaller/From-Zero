@@ -42,7 +42,6 @@ public class ItemObj : ScriptableObject
     {
         [SerializeField] public string name;
         [SerializeField] public string description;
-        [SerializeField] public Sprite icon = null;
 
         public virtual Modifier GetModifier()
         {
@@ -88,6 +87,8 @@ public class ItemObj : ScriptableObject
     #endregion
 
     public ItemType type;
+
+    [SerializeField] public Sprite icon = null;
     [SerializeReference] public ItemData data;
 
     public void Use()

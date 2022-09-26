@@ -6,14 +6,13 @@ using UnityEngine.UI;
 public class ItemSlot : MonoBehaviour
 {
     public Image icon;
-
-    [SerializeField] ItemObj item;
+    private ItemObj item;
 
     public void AddItem(ItemObj nItem)
     {
         item = nItem;
 
-        icon.sprite = item.data.icon;
+        icon.sprite = item.icon;
         icon.enabled = true;
     }
 

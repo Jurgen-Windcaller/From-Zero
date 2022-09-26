@@ -12,7 +12,7 @@ public class ActiveItemSlot : MonoBehaviour
     {
         item = nItem;
 
-        icon.sprite = nItem.data.icon;
+        icon.sprite = nItem.icon;
         icon.enabled = true;
     }
 
