@@ -18,8 +18,7 @@ public class SpellManager : MonoBehaviour
         spellButtonTransforms = transformsParent.GetComponentsInChildren<Transform>();
         inventory = ActiveItemManager.instance;
 
-        inventory.OnActiveItemChangeCallback += CheckForSpells;
-        inventory.OnActiveItemChangeCallback += CreateButtons;
+        inventory.OnActiveItemChangeCallback += AddSpells;
     }
 
     // Update is called once per frame
@@ -28,7 +27,7 @@ public class SpellManager : MonoBehaviour
 
     }
 
-    public void CheckForSpells()
+    public void AddSpells()
     {
         for (int i = 0; i < spellButtonTransforms.Length; i++)
         {
@@ -37,6 +36,7 @@ public class SpellManager : MonoBehaviour
                 if (inventory.items[i].type == ItemType.scroll && !spells.Contains(inventory.items[i]))
                 {
                     spells.Add(inventory.items[i]);
+                    CreateButtons(inventory.items[i], i);
                 }
             }
 
@@ -50,14 +50,8 @@ public class SpellManager : MonoBehaviour
         }
     }
 
-    private void CreateButtons()
+    private void CreateButtons(ItemObj item, int iterator)
     {
-        for(int i = 0; i < inventory.items.Count; i++)
-        {
-            if (i < spellButtonTransforms.Length)
-            {
-                Instantiate(spellButtonFab, spellButtonTransforms[i].position, spellButtonTransforms[i].rotation, canvas.transform);
-            }
-        }
+        Instantiate(spellButtonFab, spellButtonTransforms[iterator].position, spellButtonTransforms[iterator].rotation, canvas.transform);
     }
 }
