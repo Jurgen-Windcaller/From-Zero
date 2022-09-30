@@ -7,12 +7,12 @@ using UnityEngine.UI;
 public class SpellButton : MonoBehaviour
 {
     private ItemObj spell;
-    private Image image;
+    [SerializeField] Image image;
 
     // Start is called before the first frame update
     void Start()
     {
-        image = GetComponent<Image>();
+        //image = GetComponent<Image>();
     }
 
     // Update is called once per frame
@@ -23,13 +23,12 @@ public class SpellButton : MonoBehaviour
 
     public void OnInstantiate(ItemObj newSpell)
     {
-        Debug.Log(newSpell);
-
         spell = newSpell;
 
         if(image != null)
         {
             image.sprite = spell.icon;
+            image.enabled = true;
         }
     }
 }
