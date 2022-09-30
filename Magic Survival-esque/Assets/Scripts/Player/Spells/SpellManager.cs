@@ -10,6 +10,8 @@ public class SpellManager : MonoBehaviour
     [SerializeField] GameObject canvas;
 
     public List<ItemObj> spells = new List<ItemObj>();
+    public List<GameObject> spellButtons = new List<GameObject>();
+
     private ActiveItemManager inventory;
     private Transform[] spellButtonTransforms;
 
@@ -39,7 +41,7 @@ public class SpellManager : MonoBehaviour
                 if (inventory.items[i].type == ItemType.scroll && !spells.Contains(inventory.items[i]))
                 {
                     spells.Add(inventory.items[i]);
-                    CreateButtons(inventory.items[i], i);
+                    CreateButton(inventory.items[i], i);
                 }
             }
 
@@ -47,16 +49,32 @@ public class SpellManager : MonoBehaviour
             {
                 if (!inventory.items.Contains(spells[i]))
                 {
+                    RemoveButton(spells[i]);
                     spells.Remove(spells[i]);
                 }
             }
         }
     }
 
-    private void CreateButtons(ItemObj item, int iterator)
+    private void CreateButton(ItemObj item, int iterator)
     {
         GameObject curButton = Instantiate(spellButtonFab, spellButtonTransforms[iterator].position, spellButtonTransforms[iterator].rotation, canvas.transform);
+        spellButtons.Add(curButton);
 
         curButton.GetComponent<SpellButton>().OnInstantiate(item);
+    }
+
+    private void RemoveButton(ItemObj spell)
+    {
+        foreach(GameObject button in spellButtons)
+        {
+            if (button.GetComponent<SpellButton>().spell == spell)
+            {
+                Destroy(button);
+                spellButtons.Remove(button);
+
+                return;
+            }
+        }
     }
 }
