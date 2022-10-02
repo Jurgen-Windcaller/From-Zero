@@ -36,6 +36,15 @@ public class ItemObj : ScriptableObject
         }
     }
 
+    [SerializeField] public ItemType type;
+    [SerializeField] public Sprite icon = null;
+    [SerializeReference] public ItemData data;
+
+    public void Use()
+    {
+        ActiveItemManager.instance.AddItem(this);
+    }
+
     #region Data Classes
     [System.Serializable]
     public class ItemData
@@ -53,14 +62,7 @@ public class ItemObj : ScriptableObject
     [System.Serializable]
     public class ScrollData : ItemData
     {
-        [SerializeField] public DamageType damageType;
-        [SerializeField] public float damage;
-        [SerializeField] public float cooldown;
-
-        public override Modifier GetModifier()
-        {
-            return null;
-        }
+        [SerializeField] public Spell spell;
     }
 
     [System.Serializable]
@@ -78,23 +80,8 @@ public class ItemObj : ScriptableObject
     public class EffectData : ItemData
     {
         [SerializeField] public string effectDesc;
-
-        public override Modifier GetModifier()
-        {
-            return null;
-        }
     }
     #endregion
-
-    public ItemType type;
-
-    [SerializeField] public Sprite icon = null;
-    [SerializeReference] public ItemData data;
-
-    public void Use()
-    {
-        ActiveItemManager.instance.AddItem(this);
-    }
 }
 
 public enum ItemType
@@ -102,15 +89,4 @@ public enum ItemType
     scroll,
     armour,
     effect,
-};
-
-public enum DamageType
-{
-    flame,
-    frost,
-    electric,
-    earth,
-    necro,
-    divine,
-    hydro,
 };
