@@ -10,20 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97cb9a52d514121459ee33addc50e378, type: 3}
-  m_Name: Gargoyle Armour
+  m_Name: Data
   m_EditorClassIdentifier: 
-  type: 1
-  icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  type: 2
+  icon: {fileID: 0}
   data:
-    rid: 3256573181277765635
+    rid: -2
   references:
     version: 2
     RefIds:
-    - rid: 3256573181277765635
-      type: {class: ItemObj/ArmourData, ns: , asm: Assembly-CSharp}
-      data:
-        name: Gargoyle Armour
-        description: 
-        armourMod:
-          value: 5
-          type: 0
+    - rid: -2
+      type: {class: , ns: , asm: }

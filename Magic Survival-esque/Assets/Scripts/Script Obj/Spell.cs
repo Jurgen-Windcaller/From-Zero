@@ -30,25 +30,27 @@ public class Spell : ScriptableObject
     [SerializeField] public SpellType type;
     [SerializeReference] public SpellData data;
 
-    [SerializeField] public float cooldown;
-
     #region Data Classes
     [System.Serializable]
     public class SpellData
     {
-
+        [SerializeField] public string name;
+        [SerializeField] public float cooldown;
     }
 
     [System.Serializable]
     public class NonDamagingData : SpellData
     {
-
+        [SerializeField] public NonDamagingSpellEffect effect;
     }
 
     [System.Serializable]
     public class DamagingData : SpellData
     {
+        [SerializeField] public DamageType damageType;
+        [SerializeField] public DamagingSpellEffect effect;
 
+        [SerializeField] public int damage;
     }
     #endregion
 }
@@ -69,7 +71,6 @@ public enum DamageType
     necro,
     divine,
     hydro,
-    healing,
 };
 
 public enum DamagingSpellEffect
@@ -80,7 +81,7 @@ public enum DamagingSpellEffect
 
 public enum NonDamagingSpellEffect
 {
-    AOE,
+    healing,
     debuff,
     buff,
     movement,

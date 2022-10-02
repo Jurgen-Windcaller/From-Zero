@@ -91,3 +91,5 @@ MonoBehaviour:
   spellButtonFab: {fileID: 9125448476390620987, guid: ee527c1ed835bb2449c290b2b897c606, type: 3}
   transformsParent: {fileID: 0}
   canvas: {fileID: 0}
+  spells: []
+  spellButtons: []
