@@ -14,9 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   data:
-    rid: -2
+    rid: 3256573278048747630
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
+    - rid: 3256573278048747630
+      type: {class: Spell/DamagingData, ns: , asm: Assembly-CSharp}
+      data:
+        name: Searing Light
+        cooldown: 5
+        damageType: 5
+        effect: 0
+        damage: 10

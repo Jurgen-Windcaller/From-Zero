@@ -15,11 +15,11 @@ MonoBehaviour:
   type: 1
   icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   data:
-    rid: 3256573181277765635
+    rid: 3256573278048747626
   references:
     version: 2
     RefIds:
-    - rid: 3256573181277765635
+    - rid: 3256573278048747626
       type: {class: ItemObj/ArmourData, ns: , asm: Assembly-CSharp}
       data:
         name: Gargoyle Armour

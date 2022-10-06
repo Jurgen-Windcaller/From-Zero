@@ -5,28 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Spell", menuName = "Inventory/Spell", order = 2)]
 public class Spell : ScriptableObject
 {
-    private void OnValidate()
-    {
-        switch (type)
-        {
-            case SpellType.damaging:
-                if(data != null && data.GetType() != typeof(DamagingData))
-                {
-                    data = new DamagingData();
-                }
-                
-                break;
-
-            case SpellType.nonDamaging:
-                if(data != null && data.GetType() != typeof(NonDamagingData))
-                {
-                    data = new NonDamagingData();
-                }
-
-                break;
-        }
-    }
-
     [SerializeField] public SpellType type;
     [SerializeReference] public SpellData data;
 

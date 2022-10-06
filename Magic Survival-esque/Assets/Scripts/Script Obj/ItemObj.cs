@@ -5,37 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Data", menuName = "Inventory/Item", order = 1)]
 public class ItemObj : ScriptableObject
 {
-    // Changes the editor based on the type of the item
-    private void OnValidate()
-    {
-        switch (type)
-        {
-            case ItemType.armour:
-                if (data != null && data.GetType() != typeof(ArmourData))
-                {
-                    data = new ArmourData();
-                }
-
-                break;
-
-            case ItemType.scroll:
-                if (data != null && data.GetType() != typeof(ScrollData))
-                {
-                    data = new ScrollData();
-                }
-
-                break;
-
-            case ItemType.effect:
-                if (data != null && data.GetType() != typeof(EffectData))
-                {
-                    data = new EffectData();
-                }
-
-                break;
-        }
-    }
-
     [SerializeField] public ItemType type;
     [SerializeField] public Sprite icon = null;
     [SerializeReference] public ItemData data;
