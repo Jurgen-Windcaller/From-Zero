@@ -5,8 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Data", menuName = "Inventory/Item", order = 1)]
 public class ItemObj : ScriptableObject
 {
-    [SerializeField] public ItemType type;
-    [SerializeField] public Sprite icon = null;
+    public ItemType type;
+    public Sprite icon = null;
+
     [SerializeReference] public ItemData data;
 
     public void Use()
@@ -18,8 +19,8 @@ public class ItemObj : ScriptableObject
     [System.Serializable]
     public class ItemData
     {
-        [SerializeField] public string name;
-        [SerializeField] public string description;
+        public string name;
+        public string description;
 
         public virtual Modifier GetModifier()
         {
@@ -31,13 +32,13 @@ public class ItemObj : ScriptableObject
     [System.Serializable]
     public class ScrollData : ItemData
     {
-        [SerializeField] public Spell spell;
+        public Spell spell;
     }
 
     [System.Serializable]
     public class ArmourData : ItemData
     {
-        [SerializeField] public Modifier armourMod;
+        public Modifier armourMod;
 
         public override Modifier GetModifier()
         {
@@ -48,7 +49,7 @@ public class ItemObj : ScriptableObject
     [System.Serializable]
     public class EffectData : ItemData
     {
-        [SerializeField] public string effectDesc;
+        public string effectDesc;
     }
     #endregion
 }

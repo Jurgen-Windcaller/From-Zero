@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,30 +6,36 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Spell", menuName = "Inventory/Spell", order = 2)]
 public class Spell : ScriptableObject
 {
-    [SerializeField] public SpellType type;
+    public SpellType type;
+
     [SerializeReference] public SpellData data;
+    [SerializeReference] private Effect effect;
 
     #region Data Classes
-    [System.Serializable]
+    [Serializable]
     public class SpellData
     {
-        [SerializeField] public string name;
-        [SerializeField] public float cooldown;
+        public string name;
+        public float cooldown;
+
+        public Sprite spellFX;
     }
 
-    [System.Serializable]
+    [Serializable]
     public class NonDamagingData : SpellData
     {
-        [SerializeField] public NonDamagingSpellEffect effect;
+        public int eAmount;
+
+        public ENonDamagingSpellEffect effect;
     }
 
-    [System.Serializable]
+    [Serializable]
     public class DamagingData : SpellData
     {
-        [SerializeField] public DamageType damageType;
-        [SerializeField] public DamagingSpellEffect effect;
+        public int damage;
 
-        [SerializeField] public int damage;
+        public DamageType damageType;
+        public EDamagingSpellEffect effect;
     }
     #endregion
 }
@@ -50,14 +57,13 @@ public enum DamageType
     divine,
     hydro,
 };
-
-public enum DamagingSpellEffect
+public enum EDamagingSpellEffect
 {
     projectile,
     AOE,
 }
 
-public enum NonDamagingSpellEffect
+public enum ENonDamagingSpellEffect
 {
     healing,
     debuff,
