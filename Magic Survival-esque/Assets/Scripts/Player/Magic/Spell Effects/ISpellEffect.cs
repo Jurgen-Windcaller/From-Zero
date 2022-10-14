@@ -2,10 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Effect : ScriptableObject
+public interface ISpellEffect
 {
-    public virtual void Cast()
-    {
-
-    }
+    void EmpartEffect(Sprite fx);
 }

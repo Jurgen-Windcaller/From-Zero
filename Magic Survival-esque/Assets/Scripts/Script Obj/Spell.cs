@@ -6,48 +6,37 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Spell", menuName = "Inventory/Spell", order = 2)]
 public class Spell : ScriptableObject
 {
+    public string spellName;
+    public float cooldown;
+    public float effectAmount;
+
+    public Sprite FX;
     public SpellType type;
+    public SpellEffect effectType;
 
-    [SerializeReference] public SpellData data;
-    [SerializeReference] private Effect effect;
+    public ISpellEffect effect = new ProjectileEffect();
+    private Dictionary<string, ISpellEffect> spellEffectsDict = new Dictionary<string, ISpellEffect>();
 
-    #region Data Classes
-    [Serializable]
-    public class SpellData
+    public void Cast()
     {
-        public string name;
-        public float cooldown;
-
-        public Sprite spellFX;
+        effect.EmpartEffect(FX);
     }
 
-    [Serializable]
-    public class NonDamagingData : SpellData
+    private void OnValidate()
     {
-        public int eAmount;
-
-        public ENonDamagingSpellEffect effect;
+        /*foreach(KeyValuePair<string, ISpellEffect> elem in spellEffectsDict)
+        {
+            if(elem.Key == effectType.ToString())
+            {
+                effect = elem.Value;
+                break;
+            }
+        }*/
     }
-
-    [Serializable]
-    public class DamagingData : SpellData
-    {
-        public int damage;
-
-        public DamageType damageType;
-        public EDamagingSpellEffect effect;
-    }
-    #endregion
 }
 
 #region Enums
 public enum SpellType
-{
-    damaging,
-    nonDamaging,
-}
-
-public enum DamageType
 {
     flame,
     frost,
@@ -57,17 +46,14 @@ public enum DamageType
     divine,
     hydro,
 };
-public enum EDamagingSpellEffect
+
+public enum SpellEffect
 {
     projectile,
     AOE,
-}
-
-public enum ENonDamagingSpellEffect
-{
     healing,
     debuff,
     buff,
     movement,
-}
+};
 #endregion

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class SpellButton : MonoBehaviour
 {
-    public ItemObj spell;
+    public Spell spell;
     [SerializeField] Image image;
 
     // Start is called before the first frame update
@@ -23,12 +23,17 @@ public class SpellButton : MonoBehaviour
 
     public void OnInstantiate(ItemObj newSpell)
     {
-        spell = newSpell;
+        spell = newSpell.data.GetSpell();
 
         if(image != null)
         {
-            image.sprite = spell.icon;
+            image.sprite = newSpell.icon;
             image.enabled = true;
         }
+    }
+
+    public void OnPress()
+    {
+        spell.Cast();
     }
 }

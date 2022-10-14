@@ -197,7 +197,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9125448474893928062}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -4653236218547283910}
+        m_TargetAssemblyTypeName: SpellButton, Assembly-CSharp
+        m_MethodName: OnPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &9125448476390620987
 GameObject:
   m_ObjectHideFlags: 0
@@ -249,6 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 535bb092fb9018341855aa3e203409ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spell: {fileID: 0}
   image: {fileID: 9125448474813129038}
 --- !u!222 &1898651722967608310
 CanvasRenderer:

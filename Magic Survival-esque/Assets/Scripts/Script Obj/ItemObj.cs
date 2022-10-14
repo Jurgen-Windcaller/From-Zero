@@ -27,12 +27,22 @@ public class ItemObj : ScriptableObject
             // May be overwritten
             return null;
         }
+
+        public virtual Spell GetSpell()
+        {
+            return null;
+        }
     }
 
     [System.Serializable]
     public class ScrollData : ItemData
     {
         public Spell spell;
+
+        public override Spell GetSpell()
+        {
+            return spell;
+        }
     }
 
     [System.Serializable]
