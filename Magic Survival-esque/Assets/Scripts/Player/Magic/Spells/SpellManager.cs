@@ -68,7 +68,7 @@ public class SpellManager : MonoBehaviour
     {
         foreach(GameObject button in spellButtons)
         {
-            if (button.GetComponent<SpellButton>().spell == spell)
+            if (button.GetComponent<SpellButton>().spellObj == spell)
             {
                 Destroy(button);
                 spellButtons.Remove(button);

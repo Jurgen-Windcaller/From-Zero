@@ -261,8 +261,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 535bb092fb9018341855aa3e203409ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spell: {fileID: 0}
+  spellObj: {fileID: 0}
   image: {fileID: 9125448474813129038}
+  buttonUI: {fileID: 9125448474893928061}
 --- !u!222 &1898651722967608310
 CanvasRenderer:
   m_ObjectHideFlags: 0

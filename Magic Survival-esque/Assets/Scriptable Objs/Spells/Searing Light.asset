@@ -12,17 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76450beb773a9bf48adde12f10ac82f5, type: 3}
   m_Name: Searing Light
   m_EditorClassIdentifier: 
-  type: 0
-  data:
-    rid: 3256573278048747630
-  references:
-    version: 2
-    RefIds:
-    - rid: 3256573278048747630
-      type: {class: Spell/DamagingData, ns: , asm: Assembly-CSharp}
-      data:
-        name: Searing Light
-        cooldown: 5
-        damageType: 5
-        effect: 0
-        damage: 10
+  spellName: Searing Light
+  cooldown: 0
+  effectAmount: 0
+  FX: {fileID: 0}
+  type: 5
+  effectType: 0
